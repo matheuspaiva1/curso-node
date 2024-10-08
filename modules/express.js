@@ -42,6 +42,20 @@ app.post('/users', async (req, res) => {
   }
 })
 
+// Atualizar Usuário
+app.patch('/users/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+
+    const user = await UserModel.findByIdAndUpdate(id, req.body)
+
+    res.status(200).json(user)
+    
+  } catch (error) {
+    res.status(500).send(error.message)
+  }
+})
+
 const port = 8080
 
 app.listen(port, () => console.log(`Rodando na porta ${port}`))
