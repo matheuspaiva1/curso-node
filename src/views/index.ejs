@@ -6,6 +6,19 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
+  <div class="container">
+    <div class="content">
+      <% if (users.length > 0) { %> <% users.forEach(user => {  %>
+
+          <h3 class="title"> <%= user.firstName %> <%= user.lastName %> </h3>
+          <p class="title"> <%= user.email %> </p>
+
+        <% }) %> 
+
+      <% } else {  %>
+              <p>Não há usuários para exibir...</p>
+        <% } %>
+    </div>
+  </div>
 </body>
 </html>

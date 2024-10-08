@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json())
 
 app.set('view engine', 'ejs')
-app.set('views', '/src/views')
+app.set('views', 'src/views')
 
 
 // criando Middleware
@@ -16,6 +16,12 @@ app.use((req, res, next) => {
   console.log(`Date: ${new Date()}`)
 
   next()
+})
+
+app.get('/views/users', async (req, res) => {
+  const users = await UserModel.find({})
+
+  res.render('index', {users})
 })
 
 // Buscar todos usuários
